@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+   <meta name="HandheldFriendly" content="true" />
+  <title>Zing MP3</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <script src="assets/js/change.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/nhaccanhan.js"></script>
+  <script>
+    window.onload = function(){
+        loadMenu();
+        searchHeader();
+        loadInitMusic(); 
+        loadInforuser();
+        loadNhacCaNhan();
+        // loadAllMVCaNhan();
+        
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav id="nav"></nav>
+    <main id="main">
+      <div class="container">
+        <div class="container-header" id="container-header-id"></div>
+        <div class="container-main container-tab active-tab">
+            <div class="container-main__profile">
+              <div class="container-main__image">
+                <img src="./assets/img/imgage_interface.jpg" alt="" id="myavatars">
+              </div>
+              <div class="container-main__vip">
+              </div>
+            </div>
+            <div class="container-main__name" id="tendangnhap">Nguyễn Bích Ngọc</div>
+            <div class="container-main__navigation">
+              <ul class="container-main__list">
+                <li class="active" data-index=2>
+                  <a href="#">Bài hát</a>
+                </li>
+                <li data-index=4 onclick="loadAllMVCaNhan()">
+                  <a href="#">MV</a>
+                </li>
+              </ul>
+            </div>
+            <div class="container-main__layout">
+              <div class="overview">
+                <div class="song">
+                  <div class="block">
+                    <div class="song-content">
+                      <div class="song-content__images" style="display: none;">
+                      </div>
+                      <div class="" style="width: 30%;">
+                        <img src="./assets/img/imgage_interface.jpg" alt="" id="myavatar" style="width: 70%;">
+                      </div>
+                        <ul class="song-content__list" id="myfavorite">
+                        </ul>
+                     
+                    </div>
+                  </div>
+                </div>
+                <div class="playlist"></div>
+                <div class="album"></div>
+              </div>
+              <div class="artist-container">
+                <div class="block" id="kocomv" style="display: none;">
+                  <div class="mv-container-main">
+                    <img src="https://zjs.zadn.vn/zmp3-desktop/releases/v1.3.1/static/media/video-icon.09654360.svg" alt="">
+                    <span style="color: #fff;font-size: 14px;">Không có MV nào trong thư viện cá nhân</span>
+                  </div>
+                </div>
+                <div class="container-main__layout" style="margin-top: 80px;">
+                  <div class="overview">
+                        <div class="playlist">
+                          <div class="album">
+                              <div class="block">
+                                <ul class="album-list" id="listmva">
+                                  <!-- <li class="album-list__item" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                    <div class="album-list__image">
+                                      <img src="https://photo-resize-zmp3.zadn.vn/w320_r1x1_jpeg/covers/9/8/98e3677733fe52439823d1b1992d9ae0_1483242323.jpg" alt="">
+                                      <div class="album-list__image-overplay">
+                                        <i class="fas fa-heart"></i>
+                                          <span><i class="fas fa-play"></i></span>
+                                          <i class="fas fa-ellipsis-h"></i>
+                                      </div>
+                                    </div>
+                                    <table class="tablemv">
+                                          <tr>
+                                              <td rowspan="2"><img class="imgmv" src="image/detail.jpeg"></td>
+                                              <td><div class="album-list__heading">Lạc trôi</div></td>
+                                          </tr>
+                                          <tr>
+                                              <td><div class="tencsmv">Tung sơn</div></td>
+                                          </tr>
+                                    </table>
+                                  </li> -->
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="mv-container">
+                <div class="block">
+                  <div class="mv-container-main">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </main>
+    <div id="music">
+      <div class="music">
+        <div class="progress-mobile">
+          <div></div>
+        </div>
+        <div class="music-main">
+          <div class="music-info">
+            <div class="music-image">
+              <img src="" alt="image">
+            </div>
+            <div class="music-user">
+              <marquee class="music-user__name"></marquee>
+              <span class="music-user__author"></span>
+              <span class="angle-down"><i class="fas fa-angle-down"></i></span>
+            </div>
+            <div class="music-icon">
+              <i class="far fa-heart music-icon__like"></i>
+              <!-- <i class="fas fa-heart"></i> -->
+              <i class="fas fa-ellipsis-h"></i>
+            </div>
+          </div>
+          <div class="music-container">
+            <ul class="music-player">
+              <li class="music-player__item"><i class="far fa-heart"></i></li>
+              <li class="music-player__item music-random"><i class="fas fa-random"></i></li>
+              <li class="music-player__item music-prev"><i class="fas fa-step-backward"></i></li>
+              <li class="music-player__item music-play" id="nutpause">
+                <!-- <i class="far fa-play-circle"></i> -->
+                <i class="fas fa-play" id="playbtn" onclick="playMusic()"></i>
+                <i class="fas fa-pause" id="pausebtn" style="display: none;" onclick="pauseMusic()"></i>
+              </li>
+              <li class="music-player__item music-next"><i class="fas fa-step-forward"></i></li>
+              <li class="music-player__item music-redo"><i class="fas fa-repeat"></i></li>
+            </ul>
+            <audio src="./assets/music/Đoạn tuyệt nàng đi.mp3" id="audio"></audio>
+            <audio src="" id="audio-duration"></audio>
+            <div class="music-progress">
+              <div class="music-current">00:00</div>
+              <!-- <input type="range" name="progress-music" id="progress-music" class="music-progress__range" min="0" max="" step="1" value="0"> -->
+              <div class="progress-container">
+                <div class="progress"></div>
+              </div>
+              <div class="music-duration">00:00</div>
+            </div>
+          </div>
+          <ul class="music-control">
+            <li class="music-control__item"><i class="fab fa-youtube-square"></i></li>
+            <li class="music-control__item"><i class="fas fa-microphone"></i></li>
+            <li class="music-control__item music-control__volume"><i class="fas fa-volume-up"></i></li>
+            <li class="music-control__item">
+              <input type="range" name="progress-volume" id="progress-volume" class="progress-volume" min="0" max="100"
+                step="1">
+            </li>
+            <!-- <i class="fas fa-volume-mute"></i><i class="fas fa-volume-down"></i> -->
+            <li class="music-control__item"><i class="fas fa-expand-alt"></i></li>
+            <li class="music-control__item"><span></span></li>
+            <li class="music-control__item music-control__slider"><i class="fas fa-sliders-h"></i></li>
+          </ul>
+        </div>
+        <ul class="music-nav__mobile">
+          <li class="music-nav__mobile-item active">
+            <a href="#">
+              <i class="fab fa-itunes"></i>
+              <span>Cá nhân</span>
+            </a>
+          </li>
+          <li class="music-nav__mobile-item">
+            <a href="#">
+              <i class="fas fa-record-vinyl"></i>
+              <span>Khám phá</span>
+            </a>
+          </li>
+          <li class="music-nav__mobile-item">
+            <a href="#">
+              <i class="fab fa-facebook-messenger"></i>
+              <span>#zingchart</span>
+            </a>
+          </li>
+          <li class="music-nav__mobile-item">
+            <a href="#">
+              <i class="fas fa-radiation-alt"></i>
+              <span>Radio</span>
+            </a>
+          </li>
+          <li class="music-nav__mobile-item">
+            <a href="#">
+              <i class="fas fa-rss"></i>
+              <span>Theo dõi</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script src="./assets/js/main.js"></script>
+  <div style="z-index: 10000; " class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="height: 100%;width: 100%;">
+      <div class="modal-content" style="min-height: 100px;width: 100%;">
+        <div class="modal-header">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        <div class="col-md-12" id="sourcevideo">
+            <video width="100%;height:90%" controls>
+                <source src="" type="video/mp4">
+                Your browser does not support HTML video.
+            </video>
+        </div>
+       <div class="container">
+        <div class="row chititetmv" style="height: 300px;">
+            <div class="col-md-5">
+                <p class="tenvideo" id="tenvideo">Chir la khong cung nhau</p>
+                <a class="btn btn-primary btndownlopad" id="linkdownload" download target="_blank"><i class="fa fa-download"></i> Download</a>
+                <p class="ngaydangvideo" id="ngaydangvideo">2023-12-11</p>
+            </div>
+            <div class="col-md-7" style="min-height: 700px;">
+                <h2>MV liên quan</h2>
+                <hr>
+                <div class="row listvideos" >
+                    <div class="col-md-12 singlevideo">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <img src="assets/img/Đoạn tuyệt tình nàng.jpg" style="width: 100%;">
+                            </div>
+                            <div class="col-md-5">
+                                <p class="tenlienquan">DDoanj tuyet tinh nang</p>
+                                <p class="tennghesi">Mono</p>
+                                <p class="ngaydangvideo">2023-02-01</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 singlevideo">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <img src="assets/img/Đoạn tuyệt tình nàng.jpg" style="width: 100%;">
+                            </div>
+                            <div class="col-md-5">
+                                <p class="tenlienquan">DDoanj tuyet tinh nang</p>
+                                <p class="tennghesi">Mono</p>
+                                <p class="ngaydangvideo">2023-02-01</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 singlevideo">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <img src="assets/img/Đoạn tuyệt tình nàng.jpg" style="width: 100%;">
+                            </div>
+                            <div class="col-md-5">
+                                <p class="tenlienquan">DDoanj tuyet tinh nang</p>
+                                <p class="tennghesi">Mono</p>
+                                <p class="ngaydangvideo">2023-02-01</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+      </div>
+    </div>
+</div>
+</body>
+</html>
